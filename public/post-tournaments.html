@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous">
+        </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        function showPrev(fileRef, prevRef) {
+            const [file] = fileRef.files
+            if (file) {
+                prevRef.src = URL.createObjectURL(file)
+            }
+        }
+
+    </script>
+
+
+
+
+    <script>
+        $(document).ready(function () {
+            $("#btnFetchWithAJAX2").click(function () {
+
+                let obj = {
+                    type: "get",
+                    url: "/server-tournaments-safe",
+                    data: {
+
+
+
+                        txtEmail4: $("#txtEmail4").val(),
+                        txtTitle4: $("#txtTitle4").val(),
+                        txtDate4: $("#txtDate4").val(),
+                        txtTime4: $("#txtTime4").val(),
+                        txtAddress4: $("#txtAddress4").val(),
+                        txtCity4: $("#txtCity4").val(),
+                        txtSports4: $("#txtSports4").val(),
+                        txtMinAge4: $("#txtMinAge4").val(),
+                        txtMaxAge4: $("#txtMaxAge4").val(),
+                        txtLDR4: $("#txtLDR4").val(),
+                        txtFee4: $("#txtFee4").val(),
+                        txtPrize4: $("#txtPrize4").val(),
+                        txtCNum4: $("#txtCNum4").val()
+                    }
+                }
+
+
+                $.ajax(obj).then(
+                    function (response) {
+
+
+
+                        // let emailid = responseJsonAry[0].txtEmail4;
+                        // let event = responseJsonAry[0].txtTitle4;
+                        // let doi = responseJsonAry[0].txtDate4;
+                        // let toe = responseJsonAry[0].txtTime4;
+                        // let adress = responseJsonAry[0].txtAddress4;
+                        // let city = responseJsonAry[0].txtCity4;
+                        // let sports = responseJsonAry[0].txtSports4;
+                        // let minage = responseJsonAry[0].txtMinAge4;
+                        // let maxage = responseJsonAry[0].txtMaxAge4;
+                        // let lasdate = responseJsonAry[0].txtLDR4;
+                        // let fee = responseJsonAry[0].txtFee4;
+                        // let prize = responseJsonAry[0].txtPrize4;
+                        // let contact = responseJsonAry[0].txtCNum4;
+
+
+                        // $("#txtEmail4").val(emailid);
+                        // $("#txtTitle4").val(event);
+                        // $("#txtDate4").val(doi);
+                        // $("#txtTime4").val(toe);
+                        // $("#txtAddress4").val(adress);
+                        // $("#txtCity4").val(city);
+                        // $("#txtSports4").val(sports);
+                        // $("#txtMinAge4").val(minage);
+                        // $("#txtMaxAge4").val(maxage);
+                        // $("#txtLDR4").val(lasdate);
+                        // $("#txtFee4").val(fee);
+                        // $("#txtPrize4").val(prize);
+                        // $("#txtCNum4").val(contact);
+
+
+                        alert(response)
+
+
+
+
+                    }).fail(function (err) { alert(err.message) })
+            })
+
+
+
+        })
+
+    </script>
+
+    
+<script>
+    function showUser()
+    {
+        let activeUser=localStorage.getItem("activeUser");
+        document.getElementById("txtEmail4").value=activeUser;
+    }
+</script>
+
+
+</head>
+
+<body onload="showUser();">
+
+    <div class="row ">
+        <div class="col-md-12  bg-primary text-white" style="padding:10px 0px 10px 0px; font-family: Lucida Handwriting	;">
+            <div style="margin-left: 40px; ">www.kyros.com</div>
+            
+        </div>
+    </div>
+
+    <div class="container" style="margin-top: 40px; margin-bottom: 40px;">
+        <div class="col-md-8 offset-md-2">
+            <form class="row g-3 " style="box-shadow: 0px 0px 5px .5px black; height: 1000px; ">
+                <div class="col-md-12   " style="color:red">
+                    <center>
+                        <h2>Tournament Detail</h2>
+                    </center>
+                </div>
+                <div class="col-md-12">
+                    <label for="txtEmail4" class="form-label"
+                        style="font-weight: bolder; font-size: medium;">Organisation
+                        Information</label>
+                    <input type="text" class="form-control" id="txtEmail4" name="txtEmail4" placeholder="Email" readonly>
+                </div>
+
+
+                <hr>
+                <div class="col-md-12">
+                    <label class="form-label" style="font-weight: bolder;font-size: medium;">Tournament
+                        Information</label>
+
+                </div>
+
+
+
+                <div class="col-md-6">
+                    <label for="txtTitle4" class="form-label">Event Title</label>
+                    <input type="text" class="form-control" name="txtTitle4" id="txtTitle4" placeholder="Event Title">
+                </div>
+                <div class="col-md-3">
+                    <label for="txtDate4" class="form-label">Date</label>
+                    <input type="date" class="form-control" name="txtDate4" id="txtDate4">
+                </div>
+                <div class="col-md-3">
+                    <label for="txtTime4" class="form-label">Time</label>
+                    <input type="time" class="form-control" name="txtTime4" id="txtTime4">
+                </div>
+                <div class="col-8">
+                    <label for="txtAdd4" class="form-label">Address</label>
+                    <input type="text" class="form-control" name="txtAddress4" id="txtAddress4" placeholder="Address">
+                </div>
+                <div class="col-md-4">
+                    <label for="txtCity4" class="form-label">City</label>
+                    <input type="text" class="form-control" name="txtCity4" id="txtCity4" placeholder="City">
+                </div>
+                <div class="col-6" style="background-color: rgb(255, 255, 255);">
+                    <label for="txtSports4" class="form-label" style="display: block;">Sports Category</label>
+                    <!-- <input type="text" class="form-control" name="txtSports3" id="txtSports3">  -->
+                    <select class="form-control" name="txtSports4" id="txtSports4">
+                        <option value="none">Select</option>
+                        <option value="Boxing">Cricket</option>
+                        <option value="Judo">Hockey</option>
+                        <option value="Badminton">Badminton</option>
+                        <option value="Table Tennis">Table Tennis</option>
+                        <option value="Tennis">Tennis</option>
+                        <option>Chess</option>
+                        <option>Kabaddi</option>
+                        <option>Boxing</option>
+                        <option>Football</option>
+                        <option>Basketball</option>
+                        <option>Volleyball</option>
+                        <option>Wrestling</option>
+                        <option>Swimming</option>
+                        <option>Gymnastics</option>
+                        <option>Golf</option>
+
+
+                    </select>
+
+                </div>
+                <div class="col-3">
+                    <label for="txtMinAge4" class="form-label">Min Age</label>
+                    <input type="number" class="form-control" name="txtMinAge4" id="txtMinAge4" min="0" max="100">
+                </div>
+                <div class="col-3">
+                    <label for="txtMaxAge4" class="form-label">Max Age</label>
+                    <input type="number" class="form-control" name="txtMaxAge4" id="txtMaxAge4" min="0" max="100">
+                </div>
+                <div class="col-6">
+                    <label for="txtPrize4" class="form-label">Prize Money</label>
+                    <input type="number" class="form-control" id="txtPrize4" name="txtPrize4" min="0">
+                </div>
+
+                <div class="col-6">
+                    <label for="txtCNum4" class="form-label">Contact Number</label>
+                    <input type="text" class="form-control" id="txtCNum4" name="txtCNum4" placeholder="Contact Number">
+                </div>
+                <hr>
+                <div style="font-size: medium;font-weight: bolder;">Registeration Detail</div>
+                <div class="col-6">
+                    <label for="txtLDR4" class="form-label">Last date of registeration</label>
+                    <input type="date" class="form-control" name="txtLDR4" id="txtLDR4">
+                </div>
+                <div class="col-md-6">
+                    <label for="txtFee4" class="form-label">Registeration Fee</label>
+                    <input type="number" class="form-control" name="txtFee4" id="txtFee4" min="0">
+                </div>
+
+
+
+
+
+
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck3">
+                        <label class="form-check-label" for="gridCheck3">
+                            Check me out
+                        </label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <center>
+                        <button type="button" class="btn btn-primary" id="btnFetchWithAJAX2">Send to
+                            server</button>
+
+
+                    </center>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>

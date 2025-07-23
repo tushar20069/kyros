@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+
+    <title>Document</title>
+    <script>
+
+        var mymodule = angular.module("kuchModule", []);
+
+        mymodule.controller("kuchController", function ($scope, $http) {
+
+            $scope.jsonArray = [];
+
+            $scope.doFetchAll = function () {
+                var url = "/do-fetch-all-users4";
+
+
+                $http.get(url).then(allGoodFx, someBadFx);
+                function allGoodFx(response) {
+                    //resp in JSON array
+                    //alert(JSON.stringify(response.data));
+                    $scope.jsonArray = response.data;
+                }
+
+                function someBadFx(response) {
+                    alert(JSON.stringify(response.data));
+                }
+            }
+            //----------------------
+         
+
+        })
+
+    </script>
+</head>
+
+<body ng-app="kuchModule" ng-controller="kuchController" ng-init="doFetchAll();">
+
+    <div class="row">
+        <div
+            style="padding:10px 0px 10px 0px; font-family: Lucida Handwriting	; background-color: #0d6efd; margin-top: 0px;">
+            <div style="margin-left: 40px; ">Welcome ⮞⮞ Tushar Bansal</div>
+
+        </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; align-items: center;">
+
+
+        <input type="button" value="Fetch All Records" style="width: 200px; height: 40px; border-radius: 10px; border: 1px black; background-color:  #dc3545;
+             color: white; font-weight: bolder; font-size: 15px; margin-top: 40px; margin-bottom: 20px;"
+            ng-click="doFetchAll();">
+
+
+
+        <h2>All Records</h2>
+        <table width="1100" border="1" rules="all">
+            <tr>
+                <th style="padding: 20px; background-color: rgb(40,40,40);">Sr.No</th>
+                <th style="background-color: rgb(40,40,40);">Email Id</th>
+                <th style="background-color: rgb(40,40,40);">Reg.NO</th>
+                 <th style="background-color: rgb(40,40,40);">City</th>
+                  <th style="background-color: rgb(40,40,40);">Game</th>
+                   <th style="background-color: rgb(40,40,40);">Contact</th>
+              
+                
+              
+               
+            </tr>
+            <tr ng-repeat="obj in jsonArray">
+                <td>{{$index+1}}</td>
+                <!-- <td>{{obj.rid}}</td> -->
+                <td>{{obj.email3}}</td>
+                <td>{{obj.registeration_num3}}</td>
+                <td>{{obj.city3}}</td>
+                <td>{{obj.sports3}}</td>
+                <td>{{obj.contact3}}</td>
+            
+                
+              
+            </tr>
+        </table>
+
+
+
+    </div>    
+
+
+
+    <style>
+      
+        body {
+            background-color: #1e1e2f;
+            color: #fff;
+            font-family: sans-serif;
+            margin: 0px;
+
+        }
+
+        table {
+            width: 100%;
+            /* border-collapse: collapse; */
+            box-shadow: 1px 1px 10px rgb(252, 251, 251);
+            width: 73%;
+            margin-bottom: 60px;
+            
+
+        }
+
+        th,
+        td {
+            padding: 12px 4px;
+            border: 1px solid #444;
+            height: 30px;
+        }
+
+        th {
+            background-color: #2e2e3e;
+        }
+
+        tbody tr {
+            background-color: #2a2a3a;
+        }
+
+        tbody tr:hover {
+            background-color: #3a3a4a;
+        }
+    </style>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous">
+        </script>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+
+
+    <!---for top div -->
+    <style>
+        body {
+            /* background-color: rgb(40, 40, 40); */
+            /* background-color: #0A1828; */
+            /* background-color:  #101010; */
+            background-image: url(photo/sports\ hd\ image\ 4.jpg);
+
+            background-size: cover;
+            /* Makes it cover the entire screen */
+            background-repeat: no-repeat;
+            /* Prevents image repetition */
+            background-position: center;
+            /* Centers the image */
+            background-attachment: fixed;
+            /* Keeps image fixed while scrolling */
+            height: 100vh;
+            /* Ensures full height */
+            margin: 0;
+            /* Remove default margin */
+            padding: 0;
+        }
+
+
+
+        #title-div {
+            width: inherit;
+            /* background-color: #0afa9c; */
+            background-color: rgb(37, 36, 36);
+            line-height: 50px;
+
+            /* line height use kro bcoz text apna app center of gthe height meh ajayega */
+        }
+
+        .txt {
+            /* font-style: italic; */
+            font-size: 20px;
+            color: white;
+            margin-left: 80px;
+            /* text-shadow: 4px 4px 4px green; */
+        }
+
+        #logo {
+            margin-top: 8px;
+            height: 35px;
+            width: 40px;
+            /* border-radius: 50%; */
+            float: left;
+            margin-left: 20px;
+            background-image: url(photo/k\ image.jpg);
+            background-size: contain;
+            transition: ease all 1s;
+        }
+
+        #logo:hover {
+            transform: scale(1.2);
+            transition: ease all 1s;
+        }
+
+        #duck-baby:hover {
+            transform: scale(1.05);
+            transition: ease all 0.5s;
+        }
+
+        .smicons {
+
+            float: right;
+
+            margin-right: 20px;
+
+        }
+
+
+
+
+
+
+        #info-duck {
+            margin-top: 5px;
+            /* height: 40px;
+            width: 40px; */
+            /* border-radius: 50%; */
+            /* float: left; */
+            /* margin-left: 20px; */
+            /* background-image: url(photo/sports\ icon\ 2\ project.png); */
+            /* background-size: contain; */
+            /* transition: ease all 1s; */
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            transition: ease all 0.5s;
+        }
+    </style>
+
+    <!--validation-->
+    <style>
+        .not-ok {
+            color: red;
+            padding: 1px;
+            ;
+            font-family: cursive;
+        }
+
+        .ok {
+            color: #31fe03;
+            padding: 1px;
+            font-family: cursive;
+            font-size: 20px;
+
+        }
+
+        .ok-pic {
+            width: 20px;
+            height: 20px;
+            background-image: url(../Nodejs-june-2025/pics/ok.png);
+            background-size: contain;
+            border-radius: 10px;
+            font-size: 20px;
+        }
+
+
+        .not-ok-pic {
+            width: 20px;
+            height: 20px;
+            background-image: url(../Nodejs-june-2025/pics/cross.png);
+            background-size: contain;
+            border-radius: 10px;
+        }
+    </style>
+
+
+
+    <!--validation-->
+    <script>
+
+        $(document).ready(function () {
+
+            $("#txtEmail").keyup(function () {
+
+                let email = $(this).val(); //getter
+
+                //  let regex = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
+                let regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+                if (email == "") {
+                    $("#errMsgE").html("left empty !").addClass("not-ok").removeClass("ok");
+                    $("#errPicE").addClass("not-ok-pic").removeClass("ok-pic");
+                    $(this).focus();
+                }
+                else if (regex.test(email) == false) {
+                    $("#errMsgE").html("Invalid Email Id !").addClass("not-ok").removeClass("ok");
+                    $("#errPicE").addClass("not-ok-pic").removeClass("ok-pic");
+                    $(this).focus();
+                }
+                else {
+                    $("#errMsgE").html("valid email id").addClass("ok").removeClass("not-ok");
+                    $("#errPicE").addClass("ok-pic").removeClass("not-ok-pic");
+                }
+
+
+            })
+            //----------------------------------
+
+            $("#txtPwd").keyup(function () {
+
+                let pwd = $(this).val(); //getter
+
+                // let regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+                let regex = /^(?=.*\d)(?=.*[a-z]).{8,}$/;
+
+
+                if (pwd == "") {
+                    $("#errMsgP").html("left empty !").addClass("not-ok").removeClass("ok");
+                    $("#errPicP").addClass("not-ok-pic").removeClass("ok-pic");
+                    $(this).focus();
+                }
+                else if (regex.test(pwd) == false) {
+                    $("#errMsgP").html("Invalid Pasword !").addClass("not-ok").removeClass("ok");
+                    $("#errPicP").addClass("not-ok-pic").removeClass("ok-pic");
+                    $(this).focus();
+                }
+                else {
+                    $("#errMsgP").html("valid Password").addClass("ok").removeClass("not-ok");
+                    $("#errPicP").addClass("ok-pic").removeClass("not-ok-pic");
+                }
+
+            })
+            //==================================================
+
+
+            $("#eye").click(function () {
+
+                let txt = $("#txtPwd").prop("type");
+                if (txt == "password") {
+                    $("#txtPwd").prop("type", "text");//type changed
+                    $("#eye").removeClass("fa-eye").addClass("fa-eye-slash");
+                }
+                else {
+                    $("#txtPwd").prop("type", "password");
+                    $("#eye").removeClass("fa-eye-slash").addClass("fa-eye");
+                }
+
+            })
+
+
+        })
+
+    </script>
+
+
+
+
+
+
+    <!--validation-->
+    <script>
+
+        $(document).ready(function () {
+
+            $("#txtEmail2").keyup(function () {
+
+                let email = $(this).val(); //getter
+
+                //  let regex = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
+                let regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+                if (email == "") {
+                    $("#errMsgE2").html("left empty !").addClass("not-ok").removeClass("ok");
+                    $("#errPicE2").addClass("not-ok-pic").removeClass("ok-pic");
+                    $(this).focus();
+                }
+                else if (regex.test(email) == false) {
+                    $("#errMsgE2").html("Invalid Email Id !").addClass("not-ok").removeClass("ok");
+                    $("#errPicE2").addClass("not-ok-pic").removeClass("ok-pic");
+                    $(this).focus();
+                }
+                else {
+                    $("#errMsgE2").html("valid email id").addClass("ok").removeClass("not-ok");
+                    $("#errPicE2").addClass("ok-pic").removeClass("not-ok-pic");
+                }
+
+
+            })
+            //----------------------------------
+
+            $("#txtPwd2").keyup(function () {
+
+                let pwd = $(this).val(); //getter
+
+              let regex = /^(?=.*\d)(?=.*[a-z]).{8,}$/;
+
+
+                if (pwd == "") {
+                    $("#errMsgP2").html("left empty !").addClass("not-ok").removeClass("ok");
+                    $("#errPicP2").addClass("not-ok-pic").removeClass("ok-pic");
+                    $(this).focus();
+                }
+                else if (regex.test(pwd) == false) {
+                    $("#errMsgP2").html("Invalid Pasword !").addClass("not-ok").removeClass("ok");
+                    $("#errPicP2").addClass("not-ok-pic").removeClass("ok-pic");
+                    $(this).focus();
+                }
+                else {
+                    $("#errMsgP2").html("valid Password").addClass("ok").removeClass("not-ok");
+                    $("#errPicP2").addClass("ok-pic").removeClass("not-ok-pic");
+                }
+
+            })
+            //==================================================
+
+
+            $("#eye2").click(function () {
+
+                let txt = $("#txtPwd2").prop("type");
+                if (txt == "password") {
+                    $("#txtPwd2").prop("type", "text");//type changed
+                    $("#eye2").removeClass("fa-eye").addClass("fa-eye-slash");
+                }
+                else {
+                    $("#txtPwd2").prop("type", "password");
+                    $("#eye2").removeClass("fa-eye-slash").addClass("fa-eye");
+                }
+
+            })
+
+
+        })
+
+    </script>
+
+
+
+
+
+
+    <!--ajax-->
+    <script>
+
+        $(document).ready(function () {
+
+
+
+            $("#btnFetchWithAJAX").click(function () {
+
+                let obj = {
+                    type: "get",
+                    url: "/signup",
+                    data: {
+                        txtEmail: $("#txtEmail").val(),
+                        txtPwd: $("#txtPwd").val(),
+                        txtUser: $("#txtUser").val(),
+                    }
+                }
+
+
+                $.ajax(obj).then(
+                    function (response) {
+                        alert(response)
+                    }).fail(function (err) { alert(err.message) })
+            })
+        })
+
+
+
+    </script>
+
+
+
+    <!--ajax-->
+    <script>
+
+        $(document).ready(function () {
+
+
+
+            $("#btnFetchWithAJAX2").click(function () {
+
+                let obj = {
+                    type: "get",
+                    url: "/login",
+                    data: {
+                        txtEmail2: $("#txtEmail2").val(),
+                        txtPwd2: $("#txtPwd2").val(),
+
+
+                    }
+                }
+
+
+                $.ajax(obj).then(
+                    function (response) {
+
+                        if (response == "Blocked")
+                            alert("Your ID is Blocked By the Admin");
+                        else if (response == "Invalid")
+                            alert("Invalid Email or Password");
+                        else
+                            if (response == "Player") {
+                                localStorage.setItem("activeUser", $("#txtEmail2").val());
+                                location.href = "player-dash.html";
+                            }
+                            else if (response == "Organizer") {
+                                localStorage.setItem("activeUser", $("#txtEmail2").val());
+                                location.href = "org-dash.html";
+                            }
+                            else if (response == "Admin") {
+                                localStorage.setItem("activeUser", $("#txtEmail2").val());
+                                location.href = "admin-dash.html";
+                            }
+
+
+
+                    }).fail(function (err) { alert(err.message) })
+            })
+        })
+
+
+
+    </script>
+
+
+
+
+</head>
+
+<body>
+
+
+    <div id="title-div">
+
+        <div id="logo"></div>
+        <div class="txt" style="font-family: Rockwell;">
+            KYROS
+            <div class="smicons">
+
+                <input type="button" class="btn btn-danger" value="login" data-bs-toggle="modal"
+                    data-bs-target="#div-login"
+                    style="margin-top: -3px; font-family:monospace; margin-right: 15px; box-shadow: 1px 1px 10px rgb(114, 101, 101);">
+
+            </div>
+            <div class="smicons spl-logo">
+
+                <input type="button" class="btn btn-danger" value="signup" data-bs-toggle="modal"
+                    data-bs-target="#div-signup"
+                    style="font-family:monospace; margin-top: -3px; margin-right: 15px; box-shadow: 1px 1px 10px rgb(101, 89, 89);">
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+
+            <div class="col-md-4 mt-5" id="duck-baby">
+                <img src="photo/our mission image 2.png"
+                    style="width: 420px; height: 280px; margin-left: -60px; margin-top: 20px; border-radius: 10px; box-shadow: 1px 1px 10px rgb(41, 41, 41);">
+            </div>
+
+            <div class="col-md-8 text-white" style="font-family: cursive; font-size: 20px;">
+                As the admin of this platform, I noticed a recurring problem where talented players were missing
+                out on valuable
+                tournament opportunities simply because they weren’t aware of events happening in their own city. This
+                gap between
+                players and tournament organizers often led to frustration and lost chances to grow and compete. To
+                solve this,
+                I created this website as a central hub where players can easily find and register for tournaments near
+                them,
+                and organizers can seamlessly post and promote their events. This platform bridges that communication
+                gap,
+                ensuring that no player misses an opportunity due to lack of information. It not only helps in building
+                stronger
+                connections within the sports community but also encourages healthy competition and better
+                participation. Players
+                can now track events, view tournament details, and plan ahead with ease. I believe this initiative will
+                empower
+                athletes and help organizers reach a wider audience like never before😃.
+            </div>
+
+        </div>
+
+    </div>
+
+    <center>
+        <div id="service"
+            style=" margin-top: 150px; font-size: 30px; color: white; font-family: cursive; margin-left: -50px;">
+            Our Services
+            <div id="animated-eye">
+                <img src="photo/animated eye.webp"
+                    style="width: 50px; height: 60px;  margin-top: -102px; margin-left: 250px;">
+            </div>
+        </div>
+
+    </center>
+
+    <div class="container" style="margin-top: 50px;">
+        <div class="row">
+            <div class="col-md-10 offset-md-1"><!--row of 10 coloum-->
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card"
+                            style="background-image: url(photo/gradient\ image.jpg); margin-bottom: 100px;">
+                            <img src="photo/organizer image.png" height="150px" width="10px" class="card-img-top"
+                                alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title" style="font-weight: bolder; font-family: Lucida Sans;">ORGANIZER
+                                </h5>
+                                <p class="card-text" style="color: rgb(255, 255, 255);">Create, manage, and promote your
+                                    tournaments with ease.
+                                    List your tournaments, share all the details, and keep participants updated in real
+                                    time.List your tournaments,
+                                    share all the details, and keep participants updated in real time.</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card" style="background-image: url(photo/gradient\ image.jpg);">
+                            <img src="photo/sports player image.jpg" height="150px" width="90px" class="card-img-top"
+                                alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title" style="font-weight: bolder; font-family: Lucida Sans;">PLAYERS
+                                </h5>
+                                <p class="card-text" style="color: rgb(255, 255, 255);">Discover tournaments happening
+                                    in
+                                    your city and beyond.
+                                    No more missing out on matches due to lack of information.
+                                    Join events that match your skill, location, and passion.Your journey to the next
+                                    level starts right here.</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card" style="background-image: url(photo/gradient\ image.jpg);">
+                            <img src="photo/admin image 3.png" height="150px" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"
+                                    style="font-weight: bolder; font-family: Lucida Sans; margin-top: 3px;">ADMIN</h5>
+                                <p class="card-text"
+                                    style="color: rgb(255, 255, 255); font-size: 15px; margin-top: 16px;">
+                                    Any form of misbehavior during events—either online or on the field—will not be
+                                    tolerated. If a player or organizer receives
+                                    valid complaints from other users then
+                                    their account may be temporarily suspended or permanently blocked after
+                                    investigation</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <center>
+        <div id="develop"
+            style=" margin-top: 40px; font-size: 30px; color: white; font-family: cursive; margin-left: -40px;">
+            Roots Of This Platform
+        </div>
+
+        <div id="animated-eye">
+            <img src="photo/animated robot.webp"
+                style="width: 50px; height: 60px;  margin-top: -85px; margin-left: 380px; ">
+        </div>
+    </center>
+
+    <div class="container" style="margin-top: 50px;">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card"
+                    style="background-color: rgb(223, 230, 236); margin-bottom: 100px; box-shadow: 1px 1px 10px black;">
+                    <img src="photo/rajesh bansal image.jpg" class="card-img-top"
+                        style="border-radius: 50%; width: 250px; margin-left: 145px; margin-top: 20px; height: 200px; box-shadow: 1px 1px 10px rgb(56, 54, 54);"
+                        alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"
+                            style="font-weight: bolder; font-family:Bahnschrift; margin-top: 20px; font-size: 25px; color: rgb(114, 113, 113)">
+                            Under The Guidance Of :
+                        </h5>
+                        <p class="card-text" style="color: rgb(0, 0, 0); font-weight: bolder; font-size: 20px;">Mr.
+                            Rajesh Bansal</p>
+                        <p>● He's the author of the widely respected book 'Real Java'</p>
+                        <p>● A dedicated educator and the founder of Bangalore Computer Education, Mr.
+                            Rajesh Bansal has been a guiding light for countless students in the world of programming.
+                            His deep expertise in C, Web Development, MERN Stack, Java, DSA, and Python has made
+                            learning accessible and practical</p>
+                        <p>● Contact: 98722 46056</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card"
+                    style="background-color: rgb(223, 230, 236); margin-bottom: 100px; box-shadow: 1px 1px 10px black;">
+                    <img src="photo/tushar image 2.jpg" class="card-img-top"
+                        style="border-radius: 50%; width: 250px; margin-left: 145px; margin-top: 20px; height: 200px; box-shadow: 1px 1px 10px rgb(56, 54, 54);"
+                        alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"
+                            style="font-weight: bolder; font-family:Bahnschrift; margin-top: 25px; font-size: 25px; color: rgb(114, 113, 113)">
+                            Developed And Designed By :
+                        </h5>
+                        <p class="card-text"
+                            style="color: rgb(0, 0, 0); font-weight: bolder; font-size: 20px; margin-top: 15px;">Tushar
+                            Bansal</p>
+
+                        <p style="margin-top: 10px;">● I'm a passionate web developer and currently a fresher at Thapar
+                            Institute of
+                            Engineering & Technology, Patiala, Class of 2025.
+                            This platform is my first major project, built from scratch using technologies like HTML,
+                            CSS, JavaScript, Bootstrap, Node.js, and MySQL.
+                            It was inspired by real-world problems faced by players and organizers, and built under the
+                            valuable guidance of Mr. Rajesh Bansal. </p>
+                        <p style="margin-top: 18px;">● Contact: 90418 06670</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <center>
+        <div id="develop" style=" margin-top: 40px; font-size: 30px; color: white; font-family: cursive;">
+            Reach Us
+        </div>
+    </center>
+
+
+    <div class="container" style="margin-top: 60px;">
+        <div class="row">
+
+            <div class="col-md-6 " style="margin-bottom: 100px;">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3442.807201087299!2d76.36212627424774!3d30.356428803724043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391028ab86533db5%3A0x93cc1f72eae1c9a8!2sThapar%20Institute%20of%20Engineering%20%26%20Technology!5e0!3m2!1sen!2sin!4v1753195288725!5m2!1sen!2sin"
+                    height="250px" width="500px" style="box-shadow: 1px 1px 10px black; border-radius: 10px;"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            </div>
+
+            <div class="col-md-6">
+                <p style="font-size: 18px; font-family: 'Segoe UI', sans-serif; color: white; font-weight: bold;">
+                    Have questions, suggestions, or just want to connect? Feel free to reach out!
+                </p>
+                <ul class="mt-3"
+                    style=" padding-left: 0; font-size: 18px; font-family: 'Segoe UI', sans-serif; color: white;">
+
+                    <li class="mb-3">
+                        <i class="bi bi-envelope-fill me-2"></i>
+                        <span>Email: </span>
+                        <span style="margin-left: 10px; color: white;">tusharbansal054322@gmail.com</span>
+                    </li>
+
+                    <li class="mb-3">
+                        <i class="bi bi-telephone-fill me-2"></i>
+                        <span>Phone: </span>
+                        <span style="margin-left: 10px; color: white;">90418-06670</span>
+                    </li>
+
+                    <li class="mb-3">
+                        <i class="bi bi-github me-2"></i>
+                        <span>GitHub: </span>
+                        <a href="https://github.com/tusharbansal" target="_blank"
+                            style="margin-left: 10px; text-decoration: none; color: #2f8ffc;">
+                            github.com/tusharbansal
+                        </a>
+                    </li>
+
+                    <li>
+                        <i class="bi bi-instagram me-2"></i>
+                        <span>Instagram: </span>
+                        <a href="https://www.instagram.com/tushar._.xb/" target="_blank"
+                            style="margin-left: 10px; text-decoration: none; color:#2f8ffc;">
+                            instagram.com/tushar._.xb
+                        </a>
+                    </li>
+                </ul>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <center>
+        <!-- 
+        <p>
+        <form>
+            <input type="button" class="btn btn-danger" value="signup" data-bs-toggle="modal"
+                data-bs-target="#div-signup"
+                style="font-family:monospace; margin-top: 30px; margin-right: 15px; box-shadow: 1px 1px 10px rgb(114, 101, 101);">
+
+            <input type="button" class="btn btn-danger" value="login" data-bs-toggle="modal" data-bs-target="#div-login"
+                style="margin-top: 30px;font-family:monospace; margin-right: 15px; box-shadow: 1px 1px 10px rgb(114, 101, 101);">
+
+            <input type="submit" class="btn btn-danger" value="org-dash" formaction="/org-dash"
+                style="margin-top: 30px;font-family:monospace; margin-right: 15px; box-shadow: 1px 1px 10px rgb(114, 101, 101);">
+            </input>
+
+            <input type="submit" class="btn btn-danger" value="player-dash" formaction="/player-dash"
+                style="margin-top: 30px;font-family:monospace; margin-right: 15px; box-shadow: 1px 1px 10px rgb(114, 101, 101);">
+            </input>
+
+            <input type="submit" class="btn btn-danger" value="admin-dash" formaction="/admin-dash"
+                style="margin-top: 30px;font-family:monospace; margin-right: 15px; box-shadow: 1px 1px 10px rgb(114, 101, 101);">
+            </input>
+
+        </form>
+
+        </p> -->
+
+
+        <form>
+            <div class="modal fade" tabindex="-1" id="div-signup">
+                <!--asign id here and change the target value in button -->
+                <div class="modal-dialog">
+                    <div class="modal-content"> <!--------->
+                        <div class="modal-header bg-danger">
+                            <h5 class="modal-title text-white">SIGN UP MODAL</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <p>
+                                <!-- Modal body text goes here. --><!--copy forms link in body-->
+                            <form>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label"
+                                        style="font-weight: bolder;">Email Id</label>
+                                    <input type="email" class="form-control" id="txtEmail" aria-describedby="emailHelp"
+                                        name="txtEmail">
+                                    <div style="display: flex;">
+                                        <div id="errPicE" style="margin-top: 11px;"></div>
+                                        <div id="errMsgE" style="margin-top: 8px; margin-left: 15px;"></div>
+                                    </div>
+                                    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else. -->
+                                    <!-- </div> -->
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label"
+                                        style="font-weight: bolder;">Password</label><i
+                                        class="fa-solid fa-eye fa-bounce" id="eye"
+                                        style="cursor: pointer; margin-left: 10px;"></i>
+
+                                    <input type="password" class="form-control" id="txtPwd" name="txtPwd">
+
+
+                                    <div style="display: flex;">
+                                        <div id="errPicP" style="margin-top: 11px;"></div>
+                                        <div id="errMsgP" style="margin-top: 8px; margin-left: 15px;"></div>
+                                    </div>
+                                </div>
+
+
+                                <div class="input-group mb-3">
+                                    <select class="form-select" aria-label="Default select example" id="txtUser"
+                                        name="txtUser" style="font-weight: normal;color: rgb(0, 0, 0);">
+                                        <option selected>User Type</option>
+                                        <option value="Player">Player</option>
+                                        <option value="Organizer">Organizer</option>
+                                    </select>
+                                </div>
+                                <!-- <button type="submit" class="btn btn-primary">Submit</button> --><!--jo nhi chaihda vo hatado-->
+                            </form>
+                            </p>
+
+                        </div>
+                        <div class="modal-footer">
+                            <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                            <button type="button" class="btn btn-primary" style="margin-right: 196px;"
+                                id="btnFetchWithAJAX">Sign up</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+        <!---------------------------------------------------------LOGIN STARTS-------------------------------------------------------------->
+
+        <form>
+            <div class="modal fade" tabindex="-1" id="div-login">
+                <!--asign id here and change the target value in button -->
+                <div class="modal-dialog">
+                    <div class="modal-content"> <!--------->
+                        <div class="modal-header bg-danger">
+                            <h5 class="modal-title text-white">LOGIN MODAL</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <p>
+                                <!-- Modal body text goes here. --><!--copy forms link in body-->
+                            <form>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label"
+                                        style="font-weight: bolder;">Email Id</label>
+                                    <input type="email" class="form-control" id="txtEmail2" aria-describedby="emailHelp"
+                                        name="txtEmail2">
+                                    <div style="display: flex;">
+                                        <div id="errPicE2" style="margin-top: 11px;"></div>
+                                        <div id="errMsgE2" style="margin-top: 8px; margin-left: 15px;"></div>
+                                    </div>
+                                    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else. -->
+                                    <!-- </div> -->
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label"
+                                        style="font-weight: bolder;">Password</label><i
+                                        class="fa-solid fa-eye fa-bounce" id="eye2"
+                                        style="cursor: pointer; margin-left: 10px;"></i>
+
+                                    <input type="password" class="form-control" id="txtPwd2" name="txtPwd2">
+
+
+                                    <div style="display: flex;">
+                                        <div id="errPicP2" style="margin-top: 11px;"></div>
+                                        <div id="errMsgP2" style="margin-top: 8px; margin-left: 15px;"></div>
+                                    </div>
+
+
+
+                                </div>
+
+                            </form>
+                            </p>
+
+                        </div>
+                        <div class="modal-footer">
+                            <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                            <button type="button" class="btn btn-primary" style="margin-right: 196px;"
+                                id="btnFetchWithAJAX2">Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+
+
+
+    </center>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous">
+        </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<style>
+    .card:hover {
+    transform: scale(1.05);
+    transition: ease all 0.5s;
+}
+</style>
+
+<script>
+    function showUser() {
+        let activeUser = localStorage.getItem("activeUser");
+        document.getElementById("welcome").innerHTML = activeUser;
+    }
+</script>
+
+
+<script>
+    function doLogout() {
+        localStorage.removeItem("activeUser");
+        location.href = "index.html";
+    }
+</script>
+
+
+<body style="background-color: beige;" onload="showUser();">
+
+
+
+
+    <div class="row ">
+        <div class="col-md-12  bg-primary text-white"
+            style="padding:10px 0px 10px 0px; font-family: Lucida Handwriting	; ">
+            <div style="margin-left: 40px; ">Welcome ⮞⮞ <span id="welcome" style="margin-left: 30px;"></span></div>
+
+        </div>
+    </div>
+    <form>
+        <center>
+            <div class="container">
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col-md-10 offset-md-1"><!--row of 10 coloum-->
+
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <!--apply border border-primary to check the space occupied by the coloum and then remove it later-->
+                                <div class="card"> <!--remove width from here so that card occupy right sapce -->
+                                    <img src="photo/sports image.avif" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <input type="submit" class="btn btn-dark" value="org details"
+                                            formaction="/org-details" style="margin-top: 88px;">
+                                        </input>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <!--apply border border-primary to check the space occupied by the coloum and then remove it later-->
+                                <div class="card"> <!--remove width from here so that card occupy right sapce -->
+                                    <img src="photo/tournament poster image.avif" class="card-img-top" alt="..."
+                                        style="height: 250px;">
+                                    <div class="card-body">
+                                        <input type="submit" class="btn btn-dark" value="Create Events"
+                                            formaction="/post-tournaments" style="margin-top: 28px;">
+                                        </input>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <!--apply border border-primary to check the space occupied by the coloum and then remove it later-->
+                                <div class="card"> <!--remove width from here so that card occupy right sapce -->
+                                    <img src="photo/setttings poster image 2.webp" class="card-img-top" alt="..."
+                                        style="height: 200px;">
+                                    <div class="card-body">
+                                        <input type="submit" class="btn btn-dark" value="All Events"
+                                            formaction="/tournamentManager" style="margin-top: 78px;">
+                                        </input>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </center>
+    </form>
+
+    <center>
+        <input type="submit" class="btn btn-danger" value="Logout"  data-bs-toggle="modal" data-bs-target="#div-logout"
+            style="margin-top: 60px; width: 115px; height: 45px; font-weight: bolder; font-size: 20px; box-shadow: 1px 1px 10px rgb(117, 116, 116); font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+        </input>
+    </center>
+
+
+
+    
+
+<!-- Modal -->
+<div class="modal fade" id="div-logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"> Are you sure you want to logout ?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+    
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" >NO</button>
+        <button type="button" class="btn btn-success" onclick="doLogout();" style="margin-right: 180px;">YES</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+</body>
+
+</html>

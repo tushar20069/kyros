@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+
+    <script>
+        function showPrev(fileRef, imgRef) {
+
+            const [file] = fileRef.files
+            if (file) {
+                imgRef.src = URL.createObjectURL(file)
+            }
+
+        }
+    </script>
+
+
+
+    <script>
+        $(document).ready(function () {
+            $("#btnFetchWithAJAX").click(function () {
+
+                let obj = {
+                    type: "get",
+                    url: "/get-one",
+                    data: {
+                        txtEmail3: $("#txtEmail3").val()
+                    }
+                }
+
+
+                $.ajax(obj).then(
+                    function (responseJsonAry) {
+
+                        let email3 = responseJsonAry[0].email3;
+                        let org_name3 = responseJsonAry[0].org_name3;
+                        let registeration_num3 = responseJsonAry[0].registeration_num3;
+                        let address3 = responseJsonAry[0].address3;
+                        let city3 = responseJsonAry[0].city3;
+                        let sports3 = responseJsonAry[0].sports3;
+                        let website3 = responseJsonAry[0].website3;
+                        let insta3 = responseJsonAry[0].insta3;
+                        let head3 = responseJsonAry[0].head3;
+                        let contact3 = responseJsonAry[0].contact3;
+                        let other_info3 = responseJsonAry[0].other_info3;
+
+                        let picurl3 = responseJsonAry[0].picurl3;
+
+
+                        // let mobile = responseJsonAry[0].mobile;
+
+
+
+                        $("#txtEmail3").val(email3);
+                        $("#txtOrgName").val(org_name3);
+                        $("#txtRegName").val(registeration_num3);
+                        $("#txtAddress").val(address3);
+                        $("#txtCity").val(city3);
+                        $("#txtDeals").val(sports3);
+                        $("#txtWeb").val(website3);
+                        $("#txtInsta").val(insta3);
+                        $("#txtHead").val(head3);
+                        $("#txtContact").val(contact3);
+                        $("#txtInfo").val(other_info3);
+
+                        $("#prev").prop("src", picurl3);
+
+
+                        $("#hdn").val(picurl3);
+
+
+                    }).fail(function (err) { alert(err.message) })
+            })
+
+
+
+        })
+
+    </script>
+
+
+
+
+<script>
+    function showUser()
+    {
+        let activeUser=localStorage.getItem("activeUser");
+        document.getElementById("txtEmail3").value=activeUser;
+    }
+</script>
+
+
+
+
+</head>
+
+<body onload="showUser();">
+
+    <div class="row ">
+        <div class="col-md-12  bg-primary text-white" style="padding:10px 0px 10px 0px; font-family: Lucida Handwriting	;">
+            <div style="margin-left: 40px; ">www.kyros.com</div>
+            
+        </div>
+    </div>
+
+    <form action="/server-details-safe" method="post" enctype="multipart/form-data" class="row g-3"
+        style="transform: translateY(-20px); font-weight: bolder; border: 0px black solid; width: 900px;box-shadow: 1px 1px 10px black; border-radius: 10px; margin: auto; margin-top: 70px;">
+        <!-- <div style="width: 1000px; height: 1000px; border: 2px black solid; margin: auto; margin-top: 40px;"> -->
+
+        <input type="hidden" id="hdn" name="hdn">
+
+        <div class="col-md-12">
+            <center><label for="validationDefaultUsername" class="form-label text-danger">
+                    <h2>Profile Page</h2>
+                </label></center>
+        </div>
+
+
+
+        <div class="col-md-9">
+            <label for="validationDefaultUsername" class="form-label">Email Id</label>
+            <div class="input-group">
+                <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                <input type="text" class="form-control" id="txtEmail3" name="txtEmail3"
+                    aria-describedby="inputGroupPrepend2" required readonly>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <input type="button" value="SEARCH..." class="btn btn-secondary"
+                style="width: 210px; color: white; margin-top: 31px;" id="btnFetchWithAJAX">
+
+        </div>
+
+
+        <div class="col-md-6">
+            <label for="validationDefault01" class="form-label">Organization Name</label>
+            <input type="text" class="form-control" id="txtOrgName" name="txtOrgName" required>
+        </div>
+        <div class="col-md-6">
+            <label for="validationDefault02" class="form-label">Resgistration No</label>
+            <input type="text" class="form-control" id="txtRegName" name="txtRegName" required>
+        </div>
+
+        <div class="col-md-6">
+            <label for="validationDefault03" class="form-label">Adress</label>
+            <input type="text" class="form-control" id="txtAddress" name="txtAddress" required>
+        </div>
+
+        <div class="col-md-6">
+            <label for="validationDefault05" class="form-label">City</label>
+            <input type="text" class="form-control" id="txtCity" name="txtCity" required>
+        </div>
+
+        <div class="col-md-12">
+            <label for="validationDefault02" class="form-label">Deals In Sports</label>
+            <input type="text" class="form-control" id="txtDeals" name="txtDeals" required>
+        </div>
+
+        <div class="col-md-6">
+            <label for="validationDefault02" class="form-label">Website</label>
+            <input type="text" class="form-control" id="txtWeb" name="txtWeb" required>
+        </div>
+
+        <div class="col-md-6">
+            <label for="validationDefault03" class="form-label">Instagram</label>
+            <input type="text" class="form-control" id="txtInsta" name="txtInsta" required>
+        </div>
+
+        <div class="col-md-6">
+            <label for="validationDefault02" class="form-label">Organization Head</label>
+            <input type="text" class="form-control" id="txtHead" name="txtHead" required>
+        </div>
+
+        <div class="col-md-6">
+            <label for="validationDefault03" class="form-label">Contact No</label>
+            <input type="text" class="form-control" id="txtContact" name="txtContact" required>
+        </div>
+        <div class="col-md-12">
+            UPLOAD PROFILE PIC:
+            <input type="file" name="ProfilePic" id="ProfilePic" onchange="showPrev(this,prev);">
+            <img src="photo/nopic.png" id="prev" width="120" height="100">
+        </div>
+
+        <div class="col-md-12">
+            <label for="validationDefault03" class="form-label">Other Info</label><br>
+            <textarea rules="cols" maxlength="100" cols="117" rows="3" id="txtInfo" name="txtInfo"></textarea>
+        </div>
+
+        <div class="col-6">
+            <button class="btn btn-primary" type="submit" style="margin-left: 300px; margin-bottom: 20px;">Send To Server</button>
+        </div>
+        <div class="col-6">
+            <button class="btn btn-primary" type="submit" style="margin-left: 0px; width: 145px;  margin-bottom: 20px;"
+                formaction="/update-user">Modify</button>
+        </div>
+        <!-- </div> -->
+
+    </form>
+
+    <!-- <div class="row ">
+        <div class="col-md-12  bg-primary text-white" style="padding:10px 0px 10px 0px;">
+            <div style="margin-left: 40px;">www.realJavaOnline.com</div>
+        </div>
+    </div> -->
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

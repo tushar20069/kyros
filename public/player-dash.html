@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous">
+        </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+<style>
+    .card:hover {
+    transform: scale(1.05);
+    transition: ease all 0.5s;
+}
+</style>
+
+    <style>
+        .not-ok {
+            color: red;
+            padding: 1px;
+            ;
+            font-family: cursive;
+        }
+
+        .ok {
+            color: #31fe03;
+            padding: 1px;
+            font-family: cursive;
+            font-size: 20px;
+
+        }
+
+        .ok-pic {
+            width: 20px;
+            height: 20px;
+            background-image: url(../Nodejs-june-2025/pics/ok.png);
+            background-size: contain;
+            border-radius: 10px;
+            font-size: 20px;
+        }
+
+
+        .not-ok-pic {
+            width: 20px;
+            height: 20px;
+            background-image: url(../Nodejs-june-2025/pics/cross.png);
+            background-size: contain;
+            border-radius: 10px;
+        }
+    </style>
+
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("#txtEmail6").keyup(function () {
+
+                let email = $(this).val(); //getter
+
+                //  let regex = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
+                let regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+                if (email == "") {
+                    $("#errMsgE").html("left empty !").addClass("not-ok").removeClass("ok");
+                    $("#errPicE").addClass("not-ok-pic").removeClass("ok-pic");
+                    $(this).focus();
+                }
+                else if (regex.test(email) == false) {
+                    $("#errMsgE").html("Invalid Email Id !").addClass("not-ok").removeClass("ok");
+                    $("#errPicE").addClass("not-ok-pic").removeClass("ok-pic");
+                    $(this).focus();
+                }
+                else {
+                    $("#errMsgE").html("valid email id").addClass("ok").removeClass("not-ok");
+                    $("#errPicE").addClass("ok-pic").removeClass("not-ok-pic");
+                }
+
+
+            })
+            //----------------------------------
+
+            $("#txtPwd6").keyup(function () {
+
+                let pwd = $(this).val(); //getter
+
+                let regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+
+                if (pwd == "") {
+                    $("#errMsgP").html("left empty !").addClass("not-ok").removeClass("ok");
+                    $("#errPicP").addClass("not-ok-pic").removeClass("ok-pic");
+                    $(this).focus();
+                }
+                else if (regex.test(pwd) == false) {
+                    $("#errMsgP").html("Invalid Pasword !").addClass("not-ok").removeClass("ok");
+                    $("#errPicP").addClass("not-ok-pic").removeClass("ok-pic");
+                    $(this).focus();
+                }
+                else {
+                    $("#errMsgP").html("valid Password").addClass("ok").removeClass("not-ok");
+                    $("#errPicP").addClass("ok-pic").removeClass("not-ok-pic");
+                }
+
+            })
+            //==================================================
+
+
+            $("#txtPwd7").keyup(function () {
+
+                let pwd = $(this).val(); //getter
+
+                let regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+
+                if (pwd == "") {
+                    $("#errMsgP2").html("left empty !").addClass("not-ok").removeClass("ok");
+                    $("#errPicP2").addClass("not-ok-pic").removeClass("ok-pic");
+                    $(this).focus();
+                }
+                else if (regex.test(pwd) == false) {
+                    $("#errMsgP2").html("Invalid Pasword !").addClass("not-ok").removeClass("ok");
+                    $("#errPicP2").addClass("not-ok-pic").removeClass("ok-pic");
+                    $(this).focus();
+                }
+                else {
+                    $("#errMsgP2").html("valid Password").addClass("ok").removeClass("not-ok");
+                    $("#errPic2P").addClass("ok-pic").removeClass("not-ok-pic");
+                }
+
+            })
+
+
+            $("#eye2").click(function () {
+
+                let txt = $("#txtPwd7").prop("type");
+                if (txt == "password") {
+                    $("#txtPwd7").prop("type", "text");//type changed
+                    $("#eye1").removeClass("fa-eye").addClass("fa-eye-slash");
+                }
+                else {
+                    $("#txtPwd7").prop("type", "password");
+                    $("#eye2").removeClass("fa-eye-slash").addClass("fa-eye");
+                }
+
+            })
+
+
+            $("#eye").click(function () {
+
+                let txt = $("#txtPwd6").prop("type");
+                if (txt == "password") {
+                    $("#txtPwd6").prop("type", "text");//type changed
+                    $("#eye1").removeClass("fa-eye").addClass("fa-eye-slash");
+                }
+                else {
+                    $("#txtPwd6").prop("type", "password");
+                    $("#eye2").removeClass("fa-eye-slash").addClass("fa-eye");
+                }
+
+            })
+
+
+
+
+        })
+
+    </script>
+
+
+
+
+
+
+    <script>
+
+        $(document).ready(function () {
+
+
+
+            $("#btnFetchWithAJAX").click(function () {
+
+                let obj = {
+                    type: "get",
+                    url: "/settings-changepwd",
+                    data: {
+                        txtEmail6: $("#txtEmail6").val(),
+                        txtPwd6: $("#txtPwd6").val(),
+                        txtPwd7: $("#txtPwd7").val(),
+                    }
+                }
+
+
+                $.ajax(obj).then(
+                    function (response) {
+                        alert(response)
+                    }).fail(function (err) { alert(err.message) })
+            })
+        })
+
+
+
+    </script>
+
+
+
+    <script>
+        function showUser() {
+            let activeUser = localStorage.getItem("activeUser");
+            document.getElementById("welcome2").innerHTML = activeUser;
+
+            document.getElementById("txtEmail6").value = activeUser;
+        }
+    </script>
+
+
+
+
+    <script>
+        function doLogout()
+        {
+            localStorage.removeItem("activeUser");
+            location.href = "index.html";
+        }
+
+    </script>
+
+
+
+</head>
+
+<body style="background-color: beige;" onload="showUser();">
+
+    <div class="row ">
+        <div class="col-md-12  bg-primary text-white"
+            style="padding:10px 0px 10px 0px; font-family: Lucida Handwriting	;">
+            <div style="margin-left: 40px; ">Welcome ⮞⮞ <span id="welcome2" style="margin-left: 30px;"></span></div>
+
+        </div>
+    </div>
+    <form>
+        <center>
+            <div class="container">
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col-md-10 offset-md-1"><!--row of 10 coloum-->
+
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <!--apply border border-primary to check the space occupied by the coloum and then remove it later-->
+                                <div class="card"> <!--remove width from here so that card occupy right sapce -->
+                                    <img src="photo/default profile image 2.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <input type="submit" class="btn btn-dark" value="Player Profile"
+                                            formaction="/player-details" style="margin-top: 28px;">
+                                        </input>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <!--apply border border-primary to check the space occupied by the coloum and then remove it later-->
+                                <div class="card"> <!--remove width from here so that card occupy right sapce -->
+                                    <img src="photo/tournament poster image.avif" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <input type="submit" class="btn btn-dark" value="Explore Events"
+                                            formaction="/explore-events" style="margin-top: 28px;">
+                                        </input>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <!--apply border border-primary to check the space occupied by the coloum and then remove it later-->
+                                <div class="card"> <!--remove width from here so that card occupy right sapce -->
+                                    <img src="photo/settings poster image.webp" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <input type="button" class="btn btn-dark" value="Settings"
+                                            style="margin-top: 28px;" data-bs-toggle="modal"
+                                            data-bs-target="#div-settings">
+                                        </input>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </center>
+    </form>
+
+
+    <center>
+        <input type="button" class="btn btn-danger" value="Logout"  data-bs-toggle="modal" data-bs-target="#div-logout"
+            style="margin-top: 60px; width: 115px; height: 45px; font-weight: bolder; font-size: 20px; box-shadow: 1px 1px 10px rgb(117, 116, 116); font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+        </input>
+    </center>
+
+
+
+    <form>
+        <div class="modal fade" tabindex="-1" id="div-settings">
+            <!--asign id here and change the target value in button -->
+            <div class="modal-dialog">
+                <div class="modal-content"> <!--------->
+                    <div class="modal-header bg-danger">
+                        <h5 class="modal-title text-white">SETTINGS</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <p>
+                            <!-- Modal body text goes here. --><!--copy forms link in body-->
+                        <form>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label" style="font-weight: bolder;">Email
+                                    Id</label>
+                                <input type="email" class="form-control" id="txtEmail6" aria-describedby="emailHelp"
+                                    name="txtEmail6" readonly>
+                                <div style="display: flex;">
+                                    <div id="errPicE" style="margin-top: 11px;"></div>
+                                    <div id="errMsgE" style="margin-top: 8px; margin-left: 15px;"></div>
+                                </div>
+                                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else. -->
+                                <!-- </div> -->
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label" style="font-weight: bolder;">Old
+                                    Password</label><i class="fa-solid fa-eye fa-bounce" id="eye"
+                                    style="cursor: pointer; margin-left: 10px;"></i>
+
+                                <input type="password" class="form-control" id="txtPwd6" name="txtPwd6">
+
+
+                                <div style="display: flex;">
+                                    <div id="errPicP" style="margin-top: 11px;"></div>
+                                    <div id="errMsgP" style="margin-top: 8px; margin-left: 15px;"></div>
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label" style="font-weight: bolder;">New
+                                    Password</label><i class="fa-solid fa-eye fa-bounce" id="eye2"
+                                    style="cursor: pointer; margin-left: 10px;"></i>
+
+                                <input type="password" class="form-control" id="txtPwd7" name="txtPwd7">
+
+
+                                <div style="display: flex;">
+                                    <div id="errPicP2" style="margin-top: 11px;"></div>
+                                    <div id="errMsgP2" style="margin-top: 8px; margin-left: 15px;"></div>
+                                </div>
+                            </div>
+                            <!-- <button type="submit" class="btn btn-primary">Submit</button> --><!--jo nhi chaihda vo hatado-->
+                        </form>
+                        </p>
+
+                    </div>
+                    <div class="modal-footer">
+                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                        <button type="button" class="btn btn-primary" style="margin-right: 196px;"
+                            id="btnFetchWithAJAX">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="div-logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"> Are you sure you want to logout ?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+    
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" >NO</button>
+        <button type="button" class="btn btn-success" onclick="doLogout();" style="margin-right: 180px;">YES</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
