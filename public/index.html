@@ -270,7 +270,7 @@
 
                 let pwd = $(this).val(); //getter
 
-              let regex = /^(?=.*\d)(?=.*[a-z]).{8,}$/;
+                let regex = /^(?=.*\d)(?=.*[a-z]).{8,}$/;
 
 
                 if (pwd == "") {
@@ -500,7 +500,8 @@
                     </div>
 
                     <div class="col-md-4 ">
-                        <div class="card" style="background-image: url(photo/gradient\ image.jpg); margin-bottom: 100px;">
+                        <div class="card"
+                            style="background-image: url(photo/gradient\ image.jpg); margin-bottom: 100px;">
                             <img src="photo/sports player image.jpg" height="150px" width="90px" class="card-img-top"
                                 alt="...">
                             <div class="card-body">
@@ -559,10 +560,10 @@
                 <div class="card"
                     style="background-color: rgb(223, 230, 236); margin-bottom: 100px; box-shadow: 1px 1px 10px black;">
                     <center>
-                    <img src="photo/rajesh bansal image.jpg" class="card-img-top"
-                        style="border-radius: 50%; width: 250px;  margin-top: 20px; height: 200px; box-shadow: 1px 1px 10px rgb(56, 54, 54);"
-                        alt="...">
-                    </center>    
+                        <img src="photo/rajesh bansal image.jpg" class="card-img-top"
+                            style="border-radius: 50%; width: 250px;  margin-top: 20px; height: 200px; box-shadow: 1px 1px 10px rgb(56, 54, 54);"
+                            alt="...">
+                    </center>
                     <div class="card-body">
                         <h5 class="card-title"
                             style="font-weight: bolder; font-family:Bahnschrift; margin-top: 20px; font-size: 25px; color: rgb(114, 113, 113)">
@@ -584,10 +585,10 @@
                 <div class="card"
                     style="background-color: rgb(223, 230, 236); margin-bottom: 100px; box-shadow: 1px 1px 10px black;">
                     <center>
-                    <img src="photo/tushar image 2.jpg" class="card-img-top"
-                        style="border-radius: 50%; width: 250px; margin-top: 20px; height: 200px; box-shadow: 1px 1px 10px rgb(56, 54, 54);"
-                        alt="...">
-                    </center>    
+                        <img src="photo/tushar image 2.jpg" class="card-img-top"
+                            style="border-radius: 50%; width: 250px; margin-top: 20px; height: 200px; box-shadow: 1px 1px 10px rgb(56, 54, 54);"
+                            alt="...">
+                    </center>
                     <div class="card-body">
                         <h5 class="card-title"
                             style="font-weight: bolder; font-family:Bahnschrift; margin-top: 25px; font-size: 25px; color: rgb(114, 113, 113)">
@@ -789,6 +790,9 @@
                                         style="font-weight: bolder;">Email Id</label>
                                     <input type="email" class="form-control" id="txtEmail2" aria-describedby="emailHelp"
                                         name="txtEmail2">
+                                    <div class="invalid-feedback">
+                                        Please provide a valid city.
+                                    </div>
                                     <div style="display: flex;">
                                         <div id="errPicE2" style="margin-top: 11px;"></div>
                                         <div id="errMsgE2" style="margin-top: 8px; margin-left: 15px;"></div>
